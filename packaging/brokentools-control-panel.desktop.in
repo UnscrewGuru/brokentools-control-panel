@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=BrokenTools Control Panel
+Name[el]=BrokenTools Πίνακας Ελέγχου
+GenericName=Control Panel
+GenericName[el]=Πίνακας Ελέγχου
+Comment=All KDE settings and system tools in one searchable window
+Comment[el]=Ρυθμίσεις KDE και εργαλεία συστήματος σε ένα παράθυρο
+Exec=@BINDIR@/brokentools-control-panel
+Icon=brokentools-control-panel
+Terminal=false
+Categories=Settings;System;
+Keywords=control panel;settings;system;kde;plasma;cachyos;arch;ρυθμίσεις;πίνακας ελέγχου;
+StartupWMClass=brokentools-control-panel
