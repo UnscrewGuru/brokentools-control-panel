@@ -1,0 +1,41 @@
+name: Bug report
+description: Something does not work as expected
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Distribution and Plasma version
+      placeholder: "CachyOS, Plasma 6.x (run: plasmashell --version)"
+    validations:
+      required: true
+  - type: dropdown
+    id: install
+    attributes:
+      label: How did you install it?
+      options:
+        - Release archive + install.sh
+        - git clone + install.sh
+        - Arch package (PKGBUILD)
+        - Run without installing
+    validations:
+      required: true
+  - type: textarea
+    id: check
+    attributes:
+      label: Output of `brokentools-control-panel --check`
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: For a missing KDE settings item, also paste the output of `kcmshell6 --list`.

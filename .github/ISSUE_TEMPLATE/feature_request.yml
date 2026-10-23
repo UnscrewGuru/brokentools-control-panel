@@ -1,0 +1,16 @@
+name: New item or feature
+description: Suggest a setting, tool or improvement
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like to see?
+      description: "For a new item: what it should open or run, and in which category."
+    validations:
+      required: true
+  - type: textarea
+    id: windows
+    attributes:
+      label: Windows equivalent (optional)
+      description: Which Control Panel page or Windows tool do you miss?
