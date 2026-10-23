@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Build and release output
+dist/
+build/
+*.tar.gz
+*.sha256
+pkg/
+src/*.pkg.tar.*
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Local diagnostics
+kcm-list.txt
