@@ -3,13 +3,13 @@
 **A Windows-style Control Panel for KDE Plasma 6 on CachyOS and Arch Linux.**
 All your settings and system tools in one searchable window, grouped in familiar categories, so you do not have to remember a command or dig through System Settings for every small task.
 
-<!--
-Add screenshots to docs/screenshots/ and uncomment:
+## Screenshots
 
-![Category view](docs/screenshots/categories.png)
-![All items view](docs/screenshots/all-items.png)
-![Power profiles](docs/screenshots/power.png)
--->
+![Home: all categories](docs/screenshots/home.png)
+
+| Category with descriptions | Power profiles |
+| --- | --- |
+| ![System and security](docs/screenshots/category.png) | ![Power and performance](docs/screenshots/power.png) |
 
 ## Why
 
@@ -87,7 +87,6 @@ Adding or fixing an item does not need any GUI code. See [CONTRIBUTING.md](CONTR
 ## Roadmap
 
 - More interface languages
-- Screenshots in this README
 - AUR package
 - More items (Flatpak, firewall, backups) and per-distribution catalogues
 
@@ -102,4 +101,4 @@ GPL-3.0-or-later. See [LICENSE](LICENSE).
 ## Credits
 
 BrokenTools Control Panel is a [BrokenTools](https://brokentools.org) project by **Unscrew Guru**.
-The robot king logo is part of the BrokenTools / UnSpeech artwork.
+The robot king logo is part of the BrokenTools artwork.
