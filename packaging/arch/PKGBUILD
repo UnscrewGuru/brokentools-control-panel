@@ -1,0 +1,59 @@
+# Maintainer: UnscrewGuru
+#
+# Builds from the tagged GitHub release. Works once release v$pkgver exists.
+# After publishing a release, replace SKIP with the real checksum:  makepkg -g
+pkgname=brokentools-control-panel
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Windows-style Control Panel for KDE Plasma 6 on CachyOS and Arch Linux'
+arch=('any')
+url='https://github.com/UnscrewGuru/brokentools-control-panel'
+license=('GPL-3.0-or-later')
+depends=('python' 'python-pyqt6' 'kde-cli-tools')
+optdepends=(
+  'systemsettings: open the full KDE System Settings'
+  'power-profiles-daemon: power profile buttons'
+  'kinfocenter: hardware information'
+  'plasma-systemmonitor: task manager'
+  'discover: graphical software centre'
+  'partitionmanager: disk and partition manager'
+  'filelight: disk usage'
+  'pavucontrol: per-application volume'
+  'inxi: system summary and "copy info for help"'
+  'btop: live resource monitor'
+  'lm_sensors: temperatures and fans'
+  'lact: AMD GPU power and clocks'
+  'powertop: power consumption analysis'
+  'konsole: terminal used for command items'
+)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+check() {
+  cd "$pkgname-$pkgver"
+  PYTHONPATH=src python -B -m unittest discover -s tests
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  local appdir="/usr/share/$pkgname"
+
+  install -d "$pkgdir$appdir"
+  cp -r src/brokentools_control_panel "$pkgdir$appdir/"
+  find "$pkgdir$appdir" -name '__pycache__' -type d -prune -exec rm -rf {} +
+
+  sed "s|@APPDIR@|$appdir|g" packaging/launcher.in > "$srcdir/launcher"
+  install -Dm755 "$srcdir/launcher" "$pkgdir/usr/bin/$pkgname"
+
+  sed "s|@BINDIR@|/usr/bin|g" "packaging/$pkgname.desktop.in" > "$srcdir/$pkgname.desktop"
+  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+  local size
+  for size in 16 22 24 32 48 64 128 256 512; do
+    install -Dm644 "src/brokentools_control_panel/icons/hicolor/${size}x${size}/apps/$pkgname.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
+  done
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
